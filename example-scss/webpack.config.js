@@ -35,7 +35,7 @@ module.exports = {
               sourceMap: true,
               postcssOptions: {
                 // ベンダープレフィックスを自動付与する
-                plugins: () => [require("autoprefixer")],
+                plugins: ["autoprefixer"],
               }
             },
           },
