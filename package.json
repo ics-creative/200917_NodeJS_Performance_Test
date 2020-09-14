@@ -1,0 +1,14 @@
+{
+  "name": "performance",
+  "version": "1.0.0",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "example-nuxt",
+    "example-scss",
+    "example-ts"
+  ],
+  "scripts": {
+    "start": "node index.js"
+  }
+}

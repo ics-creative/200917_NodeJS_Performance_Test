@@ -1,0 +1,138 @@
+.detail {
+  /* 画面全体を覆うように左上に配置 */
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  padding: 40px;
+  box-sizing: border-box;
+  overflow: auto;
+
+  z-index: 11;
+
+  /* 非表示に設定しておく */
+  visibility: hidden;
+
+  h2 {
+    font-size: 3rem;
+    color: white;
+    margin: 0 0 1rem;
+
+    /* モーション用の指定 */
+    transition: all 0.3s;
+    transform: translate(0px, 30px);
+    opacity: 0;
+  }
+
+  .desc {
+    p.dummy_100 {
+      background: white;
+      width: 100%;
+      height: 1rem;
+    }
+
+    p.dummy_80 {
+      background: white;
+      width: 80%;
+      height: 1rem;
+    }
+
+    /* モーション用の指定 */
+    transition: all 0.3s;
+    transform: translate(0px, 30px);
+    opacity: 0;
+  }
+
+  .ui {
+    margin-top: 2rem;
+    text-align: center;
+
+    /* モーション用の指定 */
+    transition: all 0.3s;
+    transform: translate(0px, 30px);
+    opacity: 0;
+  }
+
+
+  ul {
+    /* 格子状に配置 */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 100px);
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    & > li {
+      width: 100px;
+      height: 100px;
+      background: white;
+
+      /* モーション用の指定 */
+      transition: all 0.5s;
+      transform: translate(0px, 30px);
+      opacity: 0;
+    }
+  }
+
+  /* Closeボタン */
+  .close {
+    background: white;
+    color: black;
+
+    padding: 0.5em 1em;
+
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+  }
+
+  /* 出現モーション */
+  &.show {
+    /* 表示状態へ変更する */
+    visibility: visible;
+
+
+    h2 {
+      /* 見出しの出現 */
+      transition: all 0.75s;
+      transition-delay: 200ms;
+      transform: translate(0, 0);
+      opacity: 1;
+    }
+
+
+    .desc {
+      /* 文章の出現 */
+      transition: all 0.75s;
+      transition-delay: 350ms;
+      transform: translate(0, 0);
+      opacity: 1;
+    }
+
+
+    .ui {
+      /* Closeボタンの出現 */
+      transition: all 0.75s;
+      transition-delay: 500ms;
+      transform: translate(0, 0);
+      opacity: 1;
+    }
+
+
+    li {
+      /* サムネイルの出現 */
+      transition: all 0.75s;
+      transform: translate(0, 0);
+      opacity: 1;
+
+      @for $i from 0 through 10 {
+
+        &:nth-child(#{$i}) {
+          transition-delay: $i * 30ms + 300ms;
+        }
+      }
+    }
+  }
+}
