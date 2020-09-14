@@ -41,7 +41,7 @@ const start = async () => {
     caches.forEach(folder => {
       if (fs.existsSync(folder)) {
         console.log(`delete ${folder}`);
-        execSync(`rm -r ${folder}`);
+        fs.rmdirSync(folder, {recursive: true});
       }
     });
 
