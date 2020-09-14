@@ -1,8 +1,3 @@
 .DS_Store
 node_modules
-/example-scss/dist/main.js.map
-/example-scss/dist/style.css
-/example-scss/dist/style.css.map
-/example-scss/dist/main.js
-/example-nuxt/dist
 /.idea

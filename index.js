@@ -1,5 +1,6 @@
 const {execSync} = require('child_process');
 const os = require('os');
+const fs = require('fs');
 
 const STEP = 5;
 
@@ -26,9 +27,23 @@ const start = async () => {
     {target: 'lint', commands: 'cd example-nuxt && yarn run lint'},
   ];
 
+  const caches = [
+    'example-ts/node_modules/.cache',
+    'example-scss/node_modules/.cache',
+    'example-nuxt/node_modules/.cache',
+  ];
+
+
   for (let i = 0; i < STEP; i++) {
     console.log(`start performance...[${i + 1}/${STEP}]`);
 
+    // キャッシュファイルの削除
+    caches.forEach(folder => {
+      if (fs.existsSync(folder)) {
+        console.log(`delete ${folder}`);
+        execSync(`rm -r ${folder}`);
+      }
+    });
 
     for (let j = 0; j < testList.length; j++) {
       const item = testList[j];
@@ -36,11 +51,17 @@ const start = async () => {
       const time = Date.now();
       execSync(item.commands);
       const ms = Date.now() - time;
-      result[item.target].push(ms);
-      await sleep(500);
+      console.log(`${ms} ms`);
+
+      // yarn install後の1回目の試行は外れ値になることが多いので除外
+      if (i > 0) {
+        result[item.target].push(ms);
+      }
+
+      await sleep(500); // CPUの呼吸
     }
 
-    await sleep(500);
+    await sleep(500); // CPUの呼吸
   }
 
   console.log({

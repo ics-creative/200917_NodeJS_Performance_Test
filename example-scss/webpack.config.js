@@ -56,4 +56,6 @@ module.exports = {
   }),],
   // source-map方式でないと、CSSの元ソースが追跡できないため
   devtool: "source-map",
+  // キャッシュを無効化
+  cache: false
 };

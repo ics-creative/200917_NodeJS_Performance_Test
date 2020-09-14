@@ -55,4 +55,8 @@ export default {
     // キャッシュ無効はデフォルト値だが、性能評価のため明示的に宣言
     cache: false,
   },
+  generate: {
+    // キャッシュが有効になっているため、明示的に利用不可に
+    cache: false,
+  },
 }
