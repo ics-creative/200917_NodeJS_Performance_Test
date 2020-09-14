@@ -5,3 +5,4 @@ node_modules
 /example-scss/dist/style.css.map
 /example-scss/dist/main.js
 /example-nuxt/dist
+/.idea
