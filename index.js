@@ -35,7 +35,7 @@ const start = async () => {
 
 
   for (let i = 0; i < STEP; i++) {
-    console.log(`start performance...[${i + 1}/${STEP}]`);
+    console.log(`\nTry [${i + 1}/${STEP}] test...`);
 
     // キャッシュファイルの削除
     caches.forEach(folder => {
@@ -47,11 +47,11 @@ const start = async () => {
 
     for (let j = 0; j < testList.length; j++) {
       const item = testList[j];
-      console.log(`[${j + 1}/${testList.length}] ${item.target}...`);
+      console.log(`  [${j + 1}/${testList.length}] ${item.target}...`);
       const time = Date.now();
       execSync(item.commands);
       const ms = Date.now() - time;
-      console.log(`${ms} ms`);
+      console.log(`  ${ms} ms`);
 
       // yarn install後の1回目の試行は外れ値になることが多いので除外
       if (i > 0) {
@@ -64,10 +64,12 @@ const start = async () => {
     await sleep(500); // CPUの呼吸
   }
 
+  console.log("✅️ On your machine, the result is as follows:\n\n");
   console.log({
     platform,
     result,
   });
+  console.log("\n");
 };
 
 const sleep = (ms) => new Promise(resolve => {
