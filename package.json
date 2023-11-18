@@ -1,5 +1,5 @@
 {
-  "name": "NodeJS_Performance_Test",
+  "name": "nodejs-performance-test",
   "version": "1.0.0",
   "license": "MIT",
   "private": true,
@@ -9,6 +9,7 @@
     "example-ts"
   ],
   "scripts": {
-    "start": "node index.js"
+    "start": "NODE_OPTIONS='--openssl-legacy-provider' node index.js",
+    "start-backup": "node index.js"
   }
 }
